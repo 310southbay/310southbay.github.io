@@ -1,147 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>310southbay</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>310 South Bay | Established in the South Bay</title>
+    <style>
+        body {
+            /* Black background to make the dark metallic logo pop */
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            font-family: 'Arial Black', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            letter-spacing: 0.1em;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Arial Black", Arial, sans-serif;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
-      color: #e6e6e6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      overflow: hidden;
-    }
+        .container {
+            max-width: 90%;
+            padding: 20px;
+        }
 
-    /* subtle moving grain effect */
-    body::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.02) 0px,
-        rgba(255,255,255,0.02) 1px,
-        transparent 1px,
-        transparent 2px
-      );
-      animation: noise 0.3s infinite;
-      opacity: 0.2;
-    }
+        .header-logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 30px; /* Space below the logo */
+        }
 
-    @keyframes noise {
-      0% { transform: translate(0,0); }
-      100% { transform: translate(-10%, -10%); }
-    }
+        .status-text {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: #d1d1d1; /* Slight grey to keep it looking like metal/pewter */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            line-height: 1.6;
+        }
 
-    .container {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-      padding: 20px;
-    }
+        .bold-phrase {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+        }
 
-    h1 {
-      font-size: 48px;
-      letter-spacing: 4px;
-      margin-bottom: 10px;
-      color: #ffffff;
-      text-transform: uppercase;
-      text-shadow:
-        0 0 5px rgba(255,255,255,0.2),
-        0 0 15px rgba(255,255,255,0.2),
-        0 0 30px rgba(255,255,255,0.1);
-    }
+        .contact-info {
+            font-size: 0.9rem;
+            font-weight: normal;
+            margin-top: 40px;
+            color: #aaaaaa;
+        }
 
-    .tagline {
-      font-style: italic;
-      font-size: 18px;
-      opacity: 0.7;
-      margin-bottom: 40px;
-    }
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid #444;
+            padding-bottom: 2px;
+        }
 
-    .status {
-      font-size: 22px;
-      letter-spacing: 2px;
-      color: #ff2b2b;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(255,0,0,0.5);
-    }
-
-    .message {
-      font-size: 16px;
-      line-height: 1.6;
-      opacity: 0.8;
-    }
-
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: #ff2b2b;
-      margin: 30px auto;
-      box-shadow: 0 0 10px rgba(255,0,0,0.6);
-    }
-
-    .email {
-      margin-top: 30px;
-      font-size: 15px;
-      letter-spacing: 1px;
-    }
-
-    a {
-      color: #ff4d4d;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-shadow: 0 0 8px rgba(255,0,0,0.8);
-    }
-
-    /* flicker effect for "Reign and Ruin" */
-    .brand {
-      font-size: 20px;
-      font-style: italic;
-      margin-bottom: 10px;
-      opacity: 0.85;
-      animation: flicker 3s infinite;
-    }
-
-    @keyframes flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        opacity: 0.85;
-      }
-      20%, 24%, 55% {
-        opacity: 0.3;
-      }
-    }
-  </style>
+        .contact-info a:hover {
+            color: #d1d1d1;
+            border-bottom-color: #ffffff;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>310SOUTHBAY</h1>
-    <div class="brand">Reign and Ruin</div>
 
-    <div class="divider"></div>
+    <div class="container">
+        <img src="https://i.ibb.co/VDPB7wZ/310-South-Bay-Logo.png" alt="310 South Bay Logo" class="header-logo">
 
-    <div class="status">SITE UNDER CONSTRUCTION</div>
+        <div class="status-text">
+            Establishment in progress.
+            <div class="bold-phrase">
+                Something is being built.<br>
+                NOT FOR EVERYONE.
+            </div>
+        </div>
 
-    <div class="message">
-      Something is being built.<br>
-      Not for everyone.
+        <div class="contact-info">
+            INQUIRIES: <a href="mailto:info@310southbay.com">INFO@310SOUTHBAY.COM</a>
+        </div>
     </div>
 
-    <div class="email">
-      <a href="mailto:info@310southbay.com">info@310southbay.com</a>
-    </div>
-  </div>
 </body>
 </html>
