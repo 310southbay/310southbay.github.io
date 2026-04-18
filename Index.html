@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>310southbay</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Arial Black", Arial, sans-serif;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      color: #e6e6e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* subtle moving grain effect */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      animation: noise 0.3s infinite;
+      opacity: 0.2;
+    }
+
+    @keyframes noise {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-10%, -10%); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      color: #ffffff;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 5px rgba(255,255,255,0.2),
+        0 0 15px rgba(255,255,255,0.2),
+        0 0 30px rgba(255,255,255,0.1);
+    }
+
+    .tagline {
+      font-style: italic;
+      font-size: 18px;
+      opacity: 0.7;
+      margin-bottom: 40px;
+    }
+
+    .status {
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: #ff2b2b;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255,0,0,0.5);
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: #ff2b2b;
+      margin: 30px auto;
+      box-shadow: 0 0 10px rgba(255,0,0,0.6);
+    }
+
+    .email {
+      margin-top: 30px;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    a {
+      color: #ff4d4d;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-shadow: 0 0 8px rgba(255,0,0,0.8);
+    }
+
+    /* flicker effect for "Reign and Ruin" */
+    .brand {
+      font-size: 20px;
+      font-style: italic;
+      margin-bottom: 10px;
+      opacity: 0.85;
+      animation: flicker 3s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 0.85;
+      }
+      20%, 24%, 55% {
+        opacity: 0.3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>310SOUTHBAY</h1>
+    <div class="brand">Reign and Ruin</div>
+
+    <div class="divider"></div>
+
+    <div class="status">SITE UNDER CONSTRUCTION</div>
+
+    <div class="message">
+      Something is being built.<br>
+      Not for everyone.
+    </div>
+
+    <div class="email">
+      <a href="mailto:info@310southbay.com">info@310southbay.com</a>
+    </div>
+  </div>
+</body>
+</html>
