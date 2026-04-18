@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>310 South Bay | Established in the South Bay</title>
+    <title>310 South Bay | Established</title>
     <style>
         body {
-            /* Black background to make the dark metallic logo pop */
             background-color: #000000;
             margin: 0;
             padding: 0;
@@ -19,7 +18,6 @@
             height: 100vh;
             text-align: center;
             overflow: hidden;
-            letter-spacing: 0.1em;
         }
 
         .container {
@@ -30,56 +28,64 @@
         .header-logo {
             max-width: 100%;
             height: auto;
-            margin-bottom: 30px; /* Space below the logo */
+            margin-bottom: 40px;
+            /* Initial shadow state */
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.2));
+            /* Link to the animation below */
+            animation: pulse 4s infinite ease-in-out;
         }
 
-        .status-text {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            color: #d1d1d1; /* Slight grey to keep it looking like metal/pewter */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            line-height: 1.6;
+        /* The slow pulsing red glow animation */
+        @keyframes pulse {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(200, 0, 0, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.7));
+            }
+            100% {
+                filter: drop-shadow(0 0 5px rgba(200, 0, 0, 0.3));
+            }
         }
 
         .bold-phrase {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
             color: #ffffff;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+            margin-bottom: 10px;
+        }
+
+        .sub-phrase {
+            font-size: 1.2rem;
+            color: #888888;
+            font-weight: normal;
+            margin-bottom: 40px;
         }
 
         .contact-info {
-            font-size: 0.9rem;
-            font-weight: normal;
-            margin-top: 40px;
-            color: #aaaaaa;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: #555555;
         }
 
         .contact-info a {
-            color: #ffffff;
-            text-decoration: none;
-            border-bottom: 1px solid #444;
-            padding-bottom: 2px;
-        }
-
-        .contact-info a:hover {
             color: #d1d1d1;
-            border-bottom-color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <img src="https://i.ibb.co/VDPB7wZ/310-South-Bay-Logo.png" alt="310 South Bay Logo" class="header-logo">
+        <img src="MagicEraser_260417_233536.png" alt="310 South Bay Logo" class="header-logo">
 
-        <div class="status-text">
-            Establishment in progress.
-            <div class="bold-phrase">
-                Something is being built.<br>
-                NOT FOR EVERYONE.
-            </div>
+        <div class="bold-phrase">
+            SOMETHING IS BEING BUILT.
+        </div>
+        <div class="sub-phrase">
+            NOT FOR EVERYONE.
         </div>
 
         <div class="contact-info">
