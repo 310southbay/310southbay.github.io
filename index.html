@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>310 South Bay</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --max-width: 768px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .logo-banner {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-weight: 400;
+            font-style: italic;
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin: 1.5rem 0;
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: #000;
+        }
+
+        .footer-image {
+            width: 100%;
+            height: auto;
+            margin-top: 3rem;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 480px) {
+            h2 { font-size: 1.4rem; }
+            .contact-info { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://onuniverse-assets.imgix.net/D714AEA0-C0BA-4837-9746-C1A24C8E268B?auto=format,compress&q=80" 
+             alt="310 South Bay" 
+             class="logo-banner">
+
+        <h2>Something is being built and it’s not for everyone.</h2>
+
+        <div class="contact-info">
+            Contact us at <a href="mailto:info@310southbay.com">info@310southbay.com</a>
+        </div>
+
+        <img src="https://onuniverse-assets.imgix.net/9ACAC8A0-B7F4-4E97-B353-0FA4023E0734?auto=format,compress&q=80" 
+             alt="Harbor and Sea" 
+             class="footer-image">
+    </div>
+
+</body>
+</html>
